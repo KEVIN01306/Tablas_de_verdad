@@ -1,5 +1,5 @@
 
-
+import Teclado from './pages/Teclado'
 import './App.css'
 
 function App() {
@@ -7,7 +7,9 @@ function App() {
 
   return (
     <>
-        <p>hola</p>
+        <Teclado/>
+        <Teclado/>
+        <Teclado/>
     </>
   )
 }
