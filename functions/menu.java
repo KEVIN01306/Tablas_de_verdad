@@ -1,10 +1,15 @@
+package functions;
 
-package functions.menu.menu;
+public class Menu{
 
-public class menu{
-    public void menuTablas(){
+    public void obtenerMenu(){
         System.out.println("*** Menú de opciones ***");
         System.out.println("1. Generar tabla de verdad");
         System.out.println("2. Salir");
     }
+
 }
+
+
+
+
