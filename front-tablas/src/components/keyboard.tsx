@@ -37,30 +37,14 @@ const TeclasKeyboard = () => {
 
     return(
         <div className="container-teclas-keyboard row">
-            <Tecla value="R"/>
-            <Tecla value="R"/>
-            <Tecla value="R"/>
-            <Tecla value="R"/>
-            <Tecla value="R"/>
-            <Tecla value="R"/>
-            <Tecla value="R"/>
-            <Tecla value="R"/>
-            <Tecla value="R"/>
-            <Tecla value="R"/>
-            <Tecla value="R"/>
-            <Tecla value="R"/>
-            <Tecla value="R"/>
-            <Tecla value="R"/>
-            <Tecla value="R"/>
-            <Tecla value="R"/>
-            <Tecla value="R"/>
-            <Tecla value="R"/>
-            <Tecla value="R"/>
-            <Tecla value="R"/>
-            <Tecla value="R"/>
-            <Tecla value="R"/>
-            <Tecla value="R"/>
-            <Tecla value="R"/>
+            <Tecla value="R"/><Tecla value="R"/><Tecla value="R"/>
+            <Tecla value="R"/><Tecla value="R"/><Tecla value="R"/>
+            <Tecla value="R"/><Tecla value="R"/><Tecla value="R"/>
+            <Tecla value="R"/><Tecla value="R"/><Tecla value="R"/>
+            <Tecla value="R"/><Tecla value="R"/><Tecla value="R"/>
+            <Tecla value="R"/><Tecla value="R"/><Tecla value="R"/>
+            <Tecla value="R"/><Tecla value="R"/><Tecla value="R"/>
+            <Tecla value="R"/><Tecla value="R"/><Tecla value="R"/>
         </div>
     )
 }
