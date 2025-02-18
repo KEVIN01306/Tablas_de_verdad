@@ -1,0 +1,130 @@
+.container-keyboard{
+    border-radius: 24px;
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    box-shadow: -16px 12px 44px 0px rgba(0, 0, 0, 0.15);
+    background-color: azure;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+    max-width: 980px !important;
+    padding: 0.5rem;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+
+.tittle-keyboard{
+    font-family: "Manrope", sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    max-width: 900px !important;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-weight: 550;
+    --tw-text-opacity: 1;
+    color: rgb(27 27 27 / var(--tw-text-opacity));
+    font-size: 1.5rem !important;
+    line-height: 2rem !important;
+    text-align: center;
+}
+
+
+.container-input-keyboard{
+    width: 100%;
+    padding: 0.1rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.container-input-keyboard input, .container-input-keyboard button{
+    border: 1px solid transparent;
+    min-height: 60px;
+    border-radius: 10px;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #d3d3d391;
+    color: rgb(95, 95, 95);
+    font-size: 1.3rem;
+}
+
+input {
+    border: none;
+    outline: none;
+    text-overflow: ellipsis;
+}
+
+.container-input-keyboard button{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+
+
+.container-teclas-keyboard{
+    width: 100%;
+    margin-top: 1em;
+    padding: 0.1rem;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.tecla-keyboard {
+    border: 1px solid transparent;
+    min-height: 60px;
+    border-radius: 10px;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #9d9d9d2b;
+    color: rgb(0, 0, 0);
+    font-size: 1.3rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.col-2-my{
+    width: 14.5%;
+}
+
+@media (max-width: 768px){
+    .container-input-keyboard input{
+        font-size: 1em;
+    }
+}
+
+
+
+@media (min-width: 640px){
+    .tittle-keyboard{
+        font-size: 2rem !important;
+        line-height: 2.5rem !important;
+    }
+    
+}
+
+@media screen and (min-width: 768px){
+    .tittle-keyboard{
+        font-size: 2.5rem !important;
+        line-height: 3rem !important;
+    }
+    
+}
+
+@media screen and (min-width: 992px){
+    .tittle-keyboard{
+        font-size: 2.7rem !important;
+        line-height: 3rem !important;
+    }
+}

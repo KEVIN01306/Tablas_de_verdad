@@ -1,12 +1,13 @@
 
 import Header from "../components/header";
+import Keyboard from "../components/keyboard";
 
 const Teclado = () => {
     return(
 
         <div className="container-principal">
             <Header/>
-            <p>Este es el teclado</p>
+            <Keyboard/>
         </div>
     )
 }
