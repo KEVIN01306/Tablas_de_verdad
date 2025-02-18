@@ -37,7 +37,7 @@
 
 .container-input-keyboard{
     width: 100%;
-    padding: 0.1rem;
+    padding-top: 1rem;
     display: flex;
     justify-content: space-evenly;
 }
@@ -73,6 +73,7 @@ input {
     width: 100%;
     margin-top: 1em;
     padding: 0.1rem;
+    padding-bottom: 1rem;
     display: flex;
     justify-content: space-evenly;
     background-color: rgba(255, 255, 255, 0);
@@ -92,6 +93,7 @@ input {
     justify-content: center;
     align-items: center;
     display: flex;
+    margin-top: 0.5em;
 }
 
 .col-2-my{
