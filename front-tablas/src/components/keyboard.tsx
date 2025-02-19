@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 const TittleKeyboard = () => {
     return (
@@ -71,12 +72,46 @@ const TeclasKeyboard = ({ agregarCaracter, borrarUltimo }: { agregarCaracter: (v
     );
 };
 
+
+const TeclasKeyboardPropositions = ({ agregarCaracter, borrarUltimo }: { agregarCaracter: (val: string) => void; borrarUltimo: () => void }) => {
+    return (
+        <div className="container-teclas-keyboard row">
+            <Tecla value="A" type_="btn-yellow" onClick={() => agregarCaracter("A")} />
+            <Tecla value="B" type_="btn-yellow" onClick={() => agregarCaracter("B")} />
+            <Tecla value="C" type_="btn-yellow" onClick={() => agregarCaracter("C")} />
+            <Tecla value="D" type_="btn-yellow" onClick={() => agregarCaracter("D")} />
+            <Tecla value="," descripcion="coma" onClick={() => agregarCaracter(",")} />
+            <Tecla value={<i className="bi bi-backspace"></i>} type_="btn-red" onClick={borrarUltimo} />
+            <Tecla value="F" type_="btn-yellow" onClick={() => agregarCaracter("F")} />
+            <Tecla value="G" type_="btn-yellow" onClick={() => agregarCaracter("G")} />
+            <Tecla value="H" type_="btn-yellow" onClick={() => agregarCaracter("H")} />
+            <Tecla value="J" type_="btn-yellow" onClick={() => agregarCaracter("J")} />
+            <Tecla value="K" type_="btn-yellow" onClick={() => agregarCaracter("K")} />
+            <Tecla value="L" type_="btn-yellow" onClick={() => agregarCaracter("L")} />
+            <Tecla value="M" type_="btn-yellow" onClick={() => agregarCaracter("M")} />
+            <Tecla value="N" type_="btn-yellow" onClick={() => agregarCaracter("N")} />
+            <Tecla value="O" type_="btn-yellow" onClick={() => agregarCaracter("O")} />
+            <Tecla value="P" type_="btn-yellow" onClick={() => agregarCaracter("P")} />
+            <Tecla value="Q" type_="btn-yellow" onClick={() => agregarCaracter("Q")} />
+            <Tecla value="R" type_="btn-yellow" onClick={() => agregarCaracter("R")} />
+            <Tecla value="S" type_="btn-yellow" onClick={() => agregarCaracter("S")} />
+            <Tecla value="U" type_="btn-yellow" onClick={() => agregarCaracter("U")} />
+            <Tecla value="W" type_="btn-yellow" onClick={() => agregarCaracter("W")} />
+            <Tecla value="X" type_="btn-yellow" onClick={() => agregarCaracter("X")} />
+            <Tecla value="Y" type_="btn-yellow" onClick={() => agregarCaracter("Y")} />
+            <Tecla value="Z" type_="btn-yellow" onClick={() => agregarCaracter("Z")} />
+        </div>
+    );
+};
+
+
 const GenerarTabla = () => {
     return <button className="btn-generar-tabla">Generar</button>;
 };
 
 const Keyboard = () => {
     const [operacion, setOperacion] = useState("");
+    const [comentario,setComentario]= useState("");
 
     const agregarCaracter = (caracter: string) => {
         setOperacion((prev) => prev + caracter);
@@ -90,6 +125,26 @@ const Keyboard = () => {
         setOperacion("");
     };
 
+    const { id } = useParams();
+
+    useEffect(() => {
+        if (id === "TableVariables") {
+            setComentario("Escoge tus Proposiciones");
+        } else {
+            setComentario("¿Te sientes confundido? ¿Qué tal A ∧ B? ¡Explora más para dominarlo!");
+        }
+    }, [id]);
+
+
+    const changeComponenteKeyboard = () =>{
+        if (id == "TableVariables"){
+            return <TeclasKeyboardPropositions agregarCaracter={agregarCaracter} borrarUltimo={borrarUltimo} />;
+        }else {
+            return <><TeclasKeyboard agregarCaracter={agregarCaracter} borrarUltimo={borrarUltimo} /> <GenerarTabla /></>
+        }
+    }
+
+
     return (
         <>
             <TittleKeyboard />
@@ -97,11 +152,10 @@ const Keyboard = () => {
                 <HeaderKeyboard operacion={operacion} clearInput={clearInput} />
                 <div className="container-comentario-keyboard">
                     <p className="comentario-keyboard">
-                        ¿Te sientes confundido? ¿Qué tal A ∧ B? ¡Explora más para dominarlo!
+                        {comentario}
                     </p>
                 </div>
-                <TeclasKeyboard agregarCaracter={agregarCaracter} borrarUltimo={borrarUltimo} />
-                <GenerarTabla />
+                {changeComponenteKeyboard()}
             </div>
         </>
     );

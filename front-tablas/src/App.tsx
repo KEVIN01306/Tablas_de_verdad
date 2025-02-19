@@ -1,12 +1,19 @@
 
-import Teclado from './pages/Teclado'
 
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import Teclado from "./pages/Teclado"
 
 function App() {
 
 
   return (
-    <Teclado/>
+    <Router>
+        <Routes>
+          <Route path="/" element={<Teclado/>} />
+          <Route path="/configuracion/:id" element={<Teclado/>} />
+        </Routes>
+    </Router>
+    
   )
 }
 
