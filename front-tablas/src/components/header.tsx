@@ -17,8 +17,8 @@ const Header = () => {
                 <button className="puntitos-menu" onClick={toggleMenu}>
                     <i style={{fontSize: '2.4rem', marginLeft: '1rem', marginRight: '0.1rem'}} className="bi bi-three-dots-vertical"></i>
                 </button>
-
-                <ul className={`dropdown-menu ${menuVisible ? "show" : ""}`}>
+{/*dropdown-menu-dark*/}
+                <ul className={`dropdown-menu  ${menuVisible ? "show" : ""}`}>
                     <li><a className="dropdown-item" href="#">Configurar Proposiciones</a></li>
                     <li><hr className="dropdown-divider"/></li>
                     <li><a className="dropdown-item" href="#">Documentación</a></li>

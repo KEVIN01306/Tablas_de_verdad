@@ -1,5 +1,6 @@
 body{
     background: linear-gradient(165deg,rgb(6, 162, 213),#94cde7,#fff);
+    /*background: linear-gradient(165deg,rgb(10, 10, 10),#979696,#727272);*/
     font-family: "Manrope", sans-serif;
     font-weight: 700;
 }
