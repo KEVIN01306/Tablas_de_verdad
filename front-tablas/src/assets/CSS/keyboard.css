@@ -149,6 +149,18 @@ input {
     .container-input-keyboard input{
         font-size: 1em;
     }
+
+    .descripcion-tecla-keyboard{
+        position: absolute;
+        font-size: 0.5rem;
+        font-weight: 500;
+        color: #000000;
+        margin-right: 0.2rem;
+        margin-bottom: 0.1rem;
+        right: 0;
+        bottom: 0;
+    }
+    
 }
 
 
