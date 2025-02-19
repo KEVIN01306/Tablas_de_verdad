@@ -23,3 +23,26 @@
 }
 
 
+.puntitos-menu{
+    background-color: transparent;
+    border: none;
+}
+
+.container-e-header {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%; 
+    background: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 1000; 
+}
+
+.dropdown-menu.show {
+    display: block;
+}
