@@ -67,11 +67,35 @@ input {
     display: flex;
 }
 
+.container-comentario-keyboard{
+    width: 95%;
+    padding: 0.1rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    background-color: rgba(255, 255, 255, 0);
+}
 
+.comentario-keyboard{
+    margin: auto;
+}
+
+.btn-generar-tabla{
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 1.3rem;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 0.6em 1.2em;
+    font-family: inherit;
+    margin-top: 0.5em;
+    margin-bottom: 0.8rem;
+    width: 95%;
+}
 
 .container-teclas-keyboard{
     width: 100%;
-    margin-top: 1em;
     padding: 0.1rem;
     padding-bottom: 1rem;
     display: flex;
@@ -98,6 +122,14 @@ input {
 
 .col-2-my{
     width: 14.5%;
+}
+
+.btn-yellow{
+    background-color: #f5ecb1 !important;
+}
+
+.btn-red{
+    background-color: #f8baba !important;
 }
 
 @media (max-width: 768px){

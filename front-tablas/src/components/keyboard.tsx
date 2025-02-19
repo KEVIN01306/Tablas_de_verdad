@@ -23,10 +23,10 @@ const HeaderKeyboard = () => {
 }
 
 
-const Tecla = (props: {value: string}) => {
+const Tecla = (props: {value: string,type_?: string}) => {
 
     return (
-        <button className="tecla-keyboard col-2-my">
+        <button className={`tecla-keyboard col-2-my ${props.type_}`}>
             {props.value}
         </button>
     )
@@ -37,15 +37,17 @@ const TeclasKeyboard = () => {
 
     return(
         <div className="container-teclas-keyboard row">
-            <Tecla value="R"/><Tecla value="R"/><Tecla value="R"/>
-            <Tecla value="R"/><Tecla value="R"/><Tecla value="R"/>
-            <Tecla value="R"/><Tecla value="R"/><Tecla value="R"/>
-            <Tecla value="R"/><Tecla value="R"/><Tecla value="R"/>
-            <Tecla value="R"/><Tecla value="R"/><Tecla value="R"/>
-            <Tecla value="R"/><Tecla value="R"/><Tecla value="R"/>
-            <Tecla value="R"/><Tecla value="R"/><Tecla value="R"/>
-            <Tecla value="R"/><Tecla value="R"/><Tecla value="R"/>
+            <Tecla value="R" type_="btn-yellow"/><Tecla value="R"/><Tecla value="R"/><Tecla value="R"/><Tecla value="R"/><Tecla value="R" type_="btn-red"/>
+            <Tecla value="R" type_="btn-yellow"/><Tecla value="R"/><Tecla value="R"/><Tecla value="R"/><Tecla value="R"/><Tecla value="R" type_="btn-red"/>
+            <Tecla value="R" type_="btn-yellow"/><Tecla value="R"/><Tecla value="R"/><Tecla value="R"/><Tecla value="R"/><Tecla value="R" type_="btn-red"/>
         </div>
+    )
+}
+
+const GenerarTabla = () => {
+    
+    return (
+        <button className="btn-generar-tabla">Generar</button>
     )
 }
 
@@ -56,7 +58,11 @@ const Keyboard = () => {
             <TittleKeyboard/>
             <div className="container-keyboard d-flex flex-column">
                 <HeaderKeyboard/>
+                <div className="container-comentario-keyboard">
+                    <p className="comentario-keyboard">¿Te sientes confundido? ¿Qué tal (A ∧ B)¬C? ¡Explora más para dominarlo!</p>
+                </div>
                 <TeclasKeyboard/>
+                <GenerarTabla/>
             </div>
         </>
     )
