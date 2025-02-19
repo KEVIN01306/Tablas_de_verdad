@@ -48,9 +48,9 @@
     border-radius: 10px;
     padding: 0.6em 1.2em;
     font-size: 1em;
-    font-weight: 500;
+    font-weight: 400;
     font-family: inherit;
-    background-color: #d3d3d391;
+    background-color: #b3b3b346;
     color: rgb(95, 95, 95);
     font-size: 1.3rem;
 }
@@ -118,6 +118,7 @@ input {
     align-items: center;
     display: flex;
     margin-top: 0.5em;
+    position: relative;
 }
 
 .col-2-my{
@@ -130,6 +131,18 @@ input {
 
 .btn-red{
     background-color: #f8baba !important;
+}
+
+
+.descripcion-tecla-keyboard{
+    position: absolute;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #000000;
+    margin-right: 0.5rem;
+    margin-bottom: 0.1rem;
+    right: 0;
+    bottom: 0;
 }
 
 @media (max-width: 768px){
