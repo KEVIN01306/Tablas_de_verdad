@@ -15,7 +15,7 @@ const Header = () => {
             <div className="container-e-header col-6 d-flex justify-content-end">
                 <ChangeTopic/>    
                 <button className="puntitos-menu" onClick={toggleMenu}>
-                    <i style={{fontSize: '2.4rem', marginLeft: '1rem', marginRight: '0.5rem'}} className="bi bi-three-dots-vertical"></i>
+                    <i style={{fontSize: '2.4rem', marginLeft: '1rem', marginRight: '0.1rem'}} className="bi bi-three-dots-vertical"></i>
                 </button>
 
                 <ul className={`dropdown-menu ${menuVisible ? "show" : ""}`}>
