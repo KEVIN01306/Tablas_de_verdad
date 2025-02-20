@@ -48,21 +48,23 @@ const Tecla = ({
 };
 
 const TeclasKeyboard = ({ agregarCaracter, borrarUltimo }: { agregarCaracter: (val: string) => void; borrarUltimo: () => void }) => {
+        const valorString = localStorage.getItem("Proposiciones");
+    const valor = valorString ? JSON.parse(valorString) : [];
     return (
         <div className="container-teclas-keyboard row">
-            <Tecla value="P" type_="btn-yellow" onClick={() => agregarCaracter("P")} />
+            <Tecla value={valor[0] ? valor[0] : ""} type_="btn-yellow" onClick={() => agregarCaracter(valor[0] ? valor[0] : "")} />
             <Tecla value="∧" descripcion="Y" onClick={() => agregarCaracter("∧")} />
             <Tecla value="∨" descripcion="O" onClick={() => agregarCaracter("∨")} />
             <Tecla value="~" descripcion="NO" onClick={() => agregarCaracter("~")} />
             <Tecla value="," descripcion="coma" onClick={() => agregarCaracter(",")} />
             <Tecla value={<i className="bi bi-backspace"></i>} type_="btn-red" onClick={borrarUltimo} />
-            <Tecla value="Q" type_="btn-yellow" onClick={() => agregarCaracter("Q")} />
+            <Tecla value={valor[1] ? valor[1] : ""} type_="btn-yellow" onClick={() => agregarCaracter(valor[1] ? valor[1] : "")} />
             <Tecla value="" descripcion="" onClick={() => agregarCaracter("")} />
             <Tecla value="→" descripcion="Condicional" onClick={() => agregarCaracter("→")} />
             <Tecla value="⊕" descripcion="⊻" onClick={() => agregarCaracter("⊕")} />
             <Tecla value="(" descripcion="Parentesis" onClick={() => agregarCaracter("(")} />
             <Tecla value="T" type_="btn-red" onClick={() => agregarCaracter("T")} />
-            <Tecla value="R" type_="btn-yellow" onClick={() => agregarCaracter("R")} />
+            <Tecla value={valor[2] ? valor[2] : ""} type_="btn-yellow" onClick={() => agregarCaracter(valor[2] ? valor[2] : "")} />
             <Tecla value="" descripcion="" onClick={() => agregarCaracter("")} />
             <Tecla value="↔" descripcion="Bicondicional" onClick={() => agregarCaracter("↔")} />
             <Tecla value="¬" descripcion="Negación" onClick={() => agregarCaracter("¬")} />
@@ -110,8 +112,13 @@ const GenerarTabla = () => {
 };
 
 const Keyboard = () => {
+
+    const API_URL = import.meta.env.VITE_API_URL;
+    
     const [operacion, setOperacion] = useState("");
     const [comentario,setComentario]= useState("");
+
+
 
     const agregarCaracter = (caracter: string) => {
         setOperacion((prev) => prev + caracter);
@@ -128,6 +135,7 @@ const Keyboard = () => {
     const { id } = useParams();
 
     useEffect(() => {
+        clearInput()
         if (id === "TableVariables") {
             setComentario("Escoge tus Proposiciones");
         } else {
@@ -135,15 +143,38 @@ const Keyboard = () => {
         }
     }, [id]);
 
+    const recepcionProposiciones = async () => {
+        try {
+            const response = await fetch(`${API_URL}/api/receptionPropositions`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ proposiciones: operacion }),
+            });
+
+            if (!response.ok) {
+                setComentario(await response.json())
+                throw new Error("Error en la solicitud");
+            }
+
+            const data = await response.json();
+            console.log("Response Data:", data);
+            setComentario(`Las nuevas proposiciones son: ${data}`)
+            localStorage.setItem("Proposiciones", JSON.stringify(data));
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     const changeComponenteKeyboard = () =>{
         if (id == "TableVariables"){
-            return <TeclasKeyboardPropositions agregarCaracter={agregarCaracter} borrarUltimo={borrarUltimo} />;
+            return <><TeclasKeyboardPropositions agregarCaracter={agregarCaracter} borrarUltimo={borrarUltimo} />
+                    <button onClick={recepcionProposiciones} className="btn-generar-tabla">Guardar</button></>;
         }else {
             return <><TeclasKeyboard agregarCaracter={agregarCaracter} borrarUltimo={borrarUltimo} /> <GenerarTabla /></>
         }
     }
-
 
     return (
         <>
@@ -155,7 +186,7 @@ const Keyboard = () => {
                         {comentario}
                     </p>
                 </div>
-                {changeComponenteKeyboard()}
+                {changeComponenteKeyboard()}            
             </div>
         </>
     );

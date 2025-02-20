@@ -33,10 +33,15 @@ public class PropositionsController {
             .map(s -> s.replaceAll("\\s+", "").toUpperCase())
             .collect(Collectors.toList());
 
+            if (proposiciones.size() > 3){
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(Arrays.asList("El maximo de proposiciones son 3."));
+            }
+
             for (String prop: proposiciones) {
                 if (prop.length() != 1){
                     return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                        .body(Arrays.asList("Las pro posiciones solo pueden contenter una letra. (P,Q,R,S,T)"));
+                        .body(Arrays.asList("Las proposiciones solo pueden contenter una letra. (P,Q,R,S,T)"));
                 }
             }
             return ResponseEntity.ok(proposiciones);
