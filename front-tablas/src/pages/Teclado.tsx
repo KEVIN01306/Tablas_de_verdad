@@ -1,6 +1,7 @@
 
 import Header from "../components/header";
 import Keyboard from "../components/keyboard";
+import Table from "../components/table";
 
 const Teclado = () => {
     return(
@@ -8,6 +9,7 @@ const Teclado = () => {
         <div className="container-principal">
             <Header/>
             <Keyboard/>
+            <Table/>
         </div>
     )
 }

@@ -7,6 +7,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './assets/CSS/header.css';
 import './assets/CSS/changeTopic.css';
 import './assets/CSS/keyboard.css';
+import './assets/CSS/table.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

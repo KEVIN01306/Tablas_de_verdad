@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import lombok.Data;
+import java.util.*;
 import java.util.List;
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -20,6 +21,7 @@ public class PropositionsController {
     public static class PropositionRequest {
         private String proposiciones;
     }
+    
 
     @PostMapping("/receptionPropositions")
     public ResponseEntity<List<String>> receptionPropositions(@RequestBody PropositionRequest request) {
@@ -38,17 +40,31 @@ public class PropositionsController {
                 .body(Arrays.asList("El maximo de proposiciones son 3."));
             }
 
+
             for (String prop: proposiciones) {
                 if (prop.length() != 1){
                     return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                         .body(Arrays.asList("Las proposiciones solo pueden contenter una letra. (P,Q,R,S,T)"));
                 }
             }
+
+            if (!sonElementosUnicos(proposiciones)){
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(Arrays.asList("No puedes seleccionar la misma Proposicion"));
+            }
+
+            
             return ResponseEntity.ok(proposiciones);
 
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(Arrays.asList("Hubo un problema al procesar las proposiciones: " + e.getMessage()));
         }
+    }
+
+    
+    public static boolean sonElementosUnicos(List<String> lista) {
+        Set<String> conjunto = new HashSet<>(lista);
+        return conjunto.size() == lista.size();
     }
 }
