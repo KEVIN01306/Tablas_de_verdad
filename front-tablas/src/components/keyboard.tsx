@@ -107,8 +107,8 @@ const TeclasKeyboardPropositions = ({ agregarCaracter, borrarUltimo }: { agregar
 };
 
 
-const GenerarTabla = () => {
-    return <button className="btn-generar-tabla">Generar</button>;
+const ButtonAccion = ({onClick,name}:{onClick: () => void;name:string}) => {
+    return <button className="btn-generar-tabla" onClick={onClick}>{name}</button>;
 };
 
 const Keyboard = () => {
@@ -143,6 +143,31 @@ const Keyboard = () => {
         }
     }, [id]);
 
+
+    const recepcionExpresiones = async () => {
+        try {
+            const response = await fetch(`${API_URL}/api/recepcionExpresiones`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ expresiones: operacion }),
+            });
+
+            if (!response.ok) {
+                setComentario(await response.json())
+                throw new Error("Error en la solicitud");
+            }
+
+            const data = await response.json();
+            console.log("Response Data:", data);
+            setComentario(`Las nuevas expresiones son: ${data}`)
+            localStorage.setItem("expresiones", JSON.stringify(data));
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     const recepcionProposiciones = async () => {
         try {
             const response = await fetch(`${API_URL}/api/receptionPropositions`, {
@@ -172,7 +197,7 @@ const Keyboard = () => {
             return <><TeclasKeyboardPropositions agregarCaracter={agregarCaracter} borrarUltimo={borrarUltimo} />
                     <button onClick={recepcionProposiciones} className="btn-generar-tabla">Guardar</button></>;
         }else {
-            return <><TeclasKeyboard agregarCaracter={agregarCaracter} borrarUltimo={borrarUltimo} /> <GenerarTabla /></>
+            return <><TeclasKeyboard agregarCaracter={agregarCaracter} borrarUltimo={borrarUltimo} /> <ButtonAccion onClick={recepcionExpresiones} name="Generar" /></>
         }
     }
 

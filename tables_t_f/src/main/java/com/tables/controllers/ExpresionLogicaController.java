@@ -33,9 +33,21 @@ public class ExpresionLogicaController{
             if (request.getExpresiones() == null || request.getExpresiones().trim().isEmpty()) {
                 return ResponseEntity.badRequest().body(List.of("Error: La expresión lógica no puede estar vacía."));
             }
-
+            
             List<String> expreciones = Arrays.asList(request.getExpresiones().trim().split("\\s*,\\s*"));
+
+            if (expreciones.size() > 3) {
+                return ResponseEntity.badRequest().body(List.of("Error: El máximo de expresiones lógicas son 3."));
+            }
+            
+            for (String exp: expreciones) {
+                if (exp.length() != 3) {
+                    return ResponseEntity.badRequest().body(List.of("Error: Las expresiones lógicas solo pueden contener 2 proposiciones y un operador logico. (PvQ, P→R, Q∧R, etc.)"));
+                }
+            }
+
 
             return ResponseEntity.ok(expreciones);
     }
+    
 }
