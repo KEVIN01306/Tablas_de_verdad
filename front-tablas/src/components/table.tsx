@@ -25,7 +25,7 @@ const Table = () => {
             <table className="table table-striped">
                 <thead>
                     <tr>
-                        <th>Título</th
+                        <th>Título</th>
                     </tr>
                 </thead>
             </table>
