@@ -41,7 +41,7 @@ public class ExpresionLogicaController{
             }
             
             for (String exp: expreciones) {
-                if (exp.length() != 3) {
+                if (exp.length() != 3 || !exp.matches("[A-Z][∧∨→⊕↔][A-Z]")) {
                     return ResponseEntity.badRequest().body(List.of("Error: Las expresiones lógicas solo pueden contener 2 proposiciones y un operador logico. (PvQ, P→R, Q∧R, etc.)"));
                 }
             }

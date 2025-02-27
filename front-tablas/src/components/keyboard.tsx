@@ -178,15 +178,24 @@ const Keyboard = () => {
                 body: JSON.stringify({ proposiciones: operacion }),
             });
 
+            setComentario("Cargando...");
+
             if (!response.ok) {
-                setComentario(await response.json())
-                throw new Error("Error en la solicitud");
+                        setComentario(await response.json())
+                        throw new Error("Error en la solicitud");
             }
 
             const data = await response.json();
             console.log("Response Data:", data);
-            setComentario(`Las nuevas proposiciones son: ${data}`)
-            localStorage.setItem("Proposiciones", JSON.stringify(data));
+            
+
+
+            setTimeout(() => {
+                setComentario(`Las nuevas proposiciones son: ${(data)}`);
+                localStorage.setItem("Proposiciones", JSON.stringify(data));
+            }, 1000);
+    
+
         } catch (error) {
             console.error(error);
         }
@@ -195,7 +204,7 @@ const Keyboard = () => {
     const changeComponenteKeyboard = () =>{
         if (id == "TableVariables"){
             return <><TeclasKeyboardPropositions agregarCaracter={agregarCaracter} borrarUltimo={borrarUltimo} />
-                    <button onClick={recepcionProposiciones} className="btn-generar-tabla">Guardar</button></>;
+                    <ButtonAccion onClick={recepcionProposiciones} name="Guardar" /></>;
         }else {
             return <><TeclasKeyboard agregarCaracter={agregarCaracter} borrarUltimo={borrarUltimo} /> <ButtonAccion onClick={recepcionExpresiones} name="Generar" /></>
         }

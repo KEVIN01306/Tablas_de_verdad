@@ -22,7 +22,13 @@ const Table = () => {
         <section className="result-table-contaier">
             <AccionesTable/>
             <div className="container-table">
-                    aqui toy
+            <table className="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Título</th
+                    </tr>
+                </thead>
+            </table>
             </div>
         </section>
     )
