@@ -117,6 +117,8 @@ const Keyboard = () => {
     
     const [operacion, setOperacion] = useState("");
     const [comentario,setComentario]= useState("");
+    const valorString = localStorage.getItem("Proposiciones");
+    const valor = valorString ? JSON.parse(valorString) : [];
 
 
 
@@ -144,6 +146,31 @@ const Keyboard = () => {
     }, [id]);
 
 
+
+
+    const createTable = async () => {
+        try {
+            const response = await fetch(`${API_URL}/api/generateTruthTable`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ proposiciones: valor }),
+            });
+
+            if (!response.ok) {
+                throw new Error("Error en la solicitud");
+            }
+
+            const data = await response.json();
+            console.log("Response tablas:", data);
+            localStorage.setItem("tablas", JSON.stringify(data));
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+
     const recepcionExpresiones = async () => {
         try {
             const response = await fetch(`${API_URL}/api/recepcionExpresiones`, {
@@ -163,6 +190,7 @@ const Keyboard = () => {
             console.log("Response Data:", data);
             setComentario(`Las nuevas expresiones son: ${data}`)
             localStorage.setItem("expresiones", JSON.stringify(data));
+            createTable();
         } catch (error) {
             console.error(error);
         }
@@ -188,7 +216,6 @@ const Keyboard = () => {
             const data = await response.json();
             console.log("Response Data:", data);
             
-
 
             setTimeout(() => {
                 setComentario(`Las nuevas proposiciones son: ${(data)}`);

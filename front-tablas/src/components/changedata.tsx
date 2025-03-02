@@ -8,19 +8,10 @@ const ChangeData = () => {
     };
 
     return (
-        <div className="switch">
-            <input 
-                className="switch-check" 
-                id="switch1" 
-                type="checkbox" 
-                checked={checked} 
-                onChange={handleToggle} 
-            />
-            <label className="switch-label" htmlFor="switch1">
-                Check
-                <span></span>
-            </label>
-        </div>
+        <label className="switch">
+            <input className="align-item-center" type="checkbox" checked={checked} onChange={handleToggle} />
+            <span className="slider"></span>
+        </label>
     );
 };
 
