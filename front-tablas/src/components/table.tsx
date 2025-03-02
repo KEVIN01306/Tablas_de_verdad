@@ -59,7 +59,7 @@ const Table = () => {
 
 
     return (
-        <section className="result-table-container">
+        <section className="result-table-contaier">
             <AccionesTable />
             <div className="container-table">
                 <table className="table table-striped">
