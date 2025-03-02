@@ -22,15 +22,13 @@ const AccionesTable = () => {
 };
 
 const Table = () => {
-    const [data, setData] = useState({});
-    const [headers, setHeaders] = useState([]);
-    const [rows, setRows] = useState([]);
+    const [headers, setHeaders] = useState<React.ReactNode[]>([]);
+    const [rows, setRows] = useState<React.ReactNode[]>([]);
 
     useEffect(() => {
         const fetchData = () => {
             const storedData = localStorage.getItem("tablas");
             const parsedData = storedData ? JSON.parse(storedData) : {};
-            setData(parsedData);
 
             // Obtener los encabezados de las claves del objeto
             const newHeaders = Object.keys(parsedData);
