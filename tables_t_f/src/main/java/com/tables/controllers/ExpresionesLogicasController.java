@@ -1,5 +1,6 @@
 package com.tables.controllers;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,8 +26,25 @@ public class ExpresionesLogicasController {
     }
 
     @PostMapping("/operadoresLogicos")
-    public Boolean operadoresLogicos(@RequestBody LogicRequest request){
-        return request.getPProposicion() && request.getSProposicion();
+    public ResponseEntity <Boolean> operadoresLogicos(@RequestBody LogicRequest request){
+        
+        String operador = request.getVLogico();
+        Boolean p = request.getPProposicion();
+        Boolean q = request.getSProposicion();
+
+
+        Boolean resultado;
+        switch (operador) {
+            case "∧": // AND
+                resultado = p && q;                
+                break;
+
+
+            default:
+                return ResponseEntity.badRequest().body(false);
+        }
+
+        return ResponseEntity.ok(resultado);
     }
 }
 
