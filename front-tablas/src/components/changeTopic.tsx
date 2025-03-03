@@ -1,7 +1,12 @@
-import  { useState } from 'react';
+import  { useState,useEffect } from 'react';
+
+
 
 const ChangeTopic = () => {
-    const [isChecked, setIsChecked] = useState(false);
+    const changeDark="changeDark"
+    const [isChecked, setIsChecked] = useState(()=>{
+        return localStorage.getItem(changeDark)||false;
+    });
 
     const handleToggle = () => {
         setIsChecked(!isChecked);
