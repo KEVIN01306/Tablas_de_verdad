@@ -38,6 +38,9 @@ public class ExpresionesLogicasController {
             case "∧": // AND
                 resultado = p && q;                
                 break;
+            case "∨": // OR
+                resultado = p || q;
+                break;
 
 
             default:
