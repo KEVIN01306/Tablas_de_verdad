@@ -4,9 +4,95 @@ import  { useState,useEffect } from 'react';
 
 const ChangeTopic = () => {
     const changeDark="changeDark"
-    const [isChecked, setIsChecked] = useState(()=>{
-        return localStorage.getItem(changeDark)||false;
+    const [isChecked, setIsChecked] = useState(() => {
+        const storedValue = localStorage.getItem(changeDark);
+        return storedValue !== null ? JSON.parse(storedValue) : false;
     });
+
+
+    useEffect(() => {
+        localStorage.setItem(changeDark, JSON.stringify(isChecked));
+
+        const keyboardElement = document.getElementById("keyboard");
+        const bg = document.getElementById("body");
+        const atables = document.querySelectorAll(".combina");
+        const tables = document.querySelectorAll(".table");
+        const keyboarH = document.querySelectorAll(".combinalos");
+        const colorDark = document.querySelectorAll(".colorFull");
+        const menuToguel = document.getElementById("dropdown");
+
+
+
+        if (keyboardElement) {
+            if (isChecked) {
+                keyboardElement.classList.add("container-keyboard-dark");
+                
+            } else {
+                keyboardElement.classList.remove("container-keyboard-dark");
+            }
+        }
+
+
+        if (menuToguel) {
+            if (isChecked) {
+                menuToguel.classList.add("dropdown-menu-dark");
+                
+            } else {
+                menuToguel.classList.remove("dropdown-menu-dark");
+            }
+        }
+
+        if (atables.length > 0) {
+            atables.forEach(atable => {
+                if (isChecked) {
+                    atable.classList.add("action-table-dark");
+                } else {
+                    atable.classList.remove("action-table-dark");
+                }
+            });
+        }
+
+        
+
+        if (keyboarH.length > 0) {
+            keyboarH.forEach(keyboar => {
+                if (isChecked) {
+                    keyboar.classList.add("input-button-dark");
+                } else {
+                    keyboar.classList.remove("input-button-dark");
+                }
+            });
+        }
+
+        if (tables.length > 0) {
+            tables.forEach(table => {
+                if (isChecked) {
+                    table.classList.add("table-dark");
+                } else {
+                    table.classList.remove("table-dark");
+                }
+            });
+        }
+        if (colorDark.length > 0) {
+            colorDark.forEach(colorDar => {
+                if (isChecked) {
+                    colorDar.classList.add("color-Full-dark");
+                } else {
+                    colorDar.classList.remove("color-Full-dark");
+                }
+            });
+        }
+    
+
+        if (bg) {
+            if (isChecked) {
+                bg.classList.add("bg-body-dark");
+                
+            } else {
+                bg.classList.remove("bg-body-dark");
+            }
+        }
+    }, [isChecked]);
 
     const handleToggle = () => {
         setIsChecked(!isChecked);

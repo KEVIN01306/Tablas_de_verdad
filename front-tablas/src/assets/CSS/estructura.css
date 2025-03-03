@@ -1,11 +1,24 @@
 body{
-    background: linear-gradient(175deg,rgb(47, 197, 247),rgb(155, 228, 252),#b9e5fa,#fff);
+    background: linear-gradient(175deg, rgb(47, 197, 247), rgb(155, 228, 252), #b9e5fa, #fff);
     /*background: linear-gradient(160deg,rgb(255, 182, 139),rgb(255, 244, 149),#7cd6ff,#fff);*/
-    background: linear-gradient(137deg, #04142c, #0c4291, #3181f7);
     font-family: "Manrope", sans-serif;
+    animation: animatedBackground 8s infinite linear; 
+    background-size: 100% 100%;
     font-weight: 700;
     min-width: 355px;
     min-height: 100vh;
+}
+
+@keyframes animatedBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 
@@ -26,10 +39,6 @@ body{
     background: linear-gradient(137deg, #04142c, #0c4291, #3181f7) !important;
 }
 
-.container-keyboard{
-    background-color: #ffffff40 !important;
-}
-
 .tecla-dark{
     background-color: #e9ecef !important;
 }
@@ -48,5 +57,9 @@ body{
 
 .action-table-dark{
     background-color: rgb(46, 45, 45) !important;
+    color: white !important;
+}
+
+.color-Full-dark{
     color: white !important;
 }

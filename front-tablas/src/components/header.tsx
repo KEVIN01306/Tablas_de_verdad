@@ -34,7 +34,7 @@ const Header = () => {
                     <i style={{fontSize: '2.4rem', marginLeft: '1rem', marginRight: '0.1rem'}} className="bi bi-three-dots-vertical"></i>
                 </button>
                                 {/*dropdown-menu-dark*/}
-                <ul className={`dropdown-menu  ${menuVisible ? "show" : ""}`}>
+                <ul className={`dropdown-menu  ${menuVisible ? "show" : ""}`} id="dropdown">
                     <li><a className="dropdown-item" onClick={irGenerador}>Generador</a></li>
                     <li><hr className="dropdown-divider"/></li>
                     <li><a className="dropdown-item" onClick={irProposiciones}>Configurar Proposiciones</a></li>

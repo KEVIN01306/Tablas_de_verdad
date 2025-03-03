@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 const TittleKeyboard = () => {
     return (
-        <h1 style={{ verticalAlign: "inherit" }} className="tittle-keyboard">
+        <h1 style={{ verticalAlign: "inherit" }} className="tittle-keyboard colorFull">
             Generador de tablas de verdad
         </h1>
     );
@@ -13,16 +13,16 @@ const HeaderKeyboard = ({ operacion, clearInput }: { operacion: string; clearInp
     return (
         <div className="container-input-keyboard row">
             <input
-                className="col-7 col-md-9"
+                className="combinalos col-7 col-md-9"
                 type="text"
                 placeholder="Ingresa las operaciones"
                 value={operacion}
                 readOnly
             />
-            <button className="col-2 col-md-1" onClick={clearInput}>
+            <button className="combinalos col-2 col-md-1" onClick={clearInput}>
                 <i className="bi bi-trash3"></i>
             </button>
-            <button className="col-2 col-md-1">
+            <button className="combinalos col-2 col-md-1">
                 <i className="bi bi-info"></i>
             </button>
         </div>
@@ -240,10 +240,10 @@ const Keyboard = () => {
     return (
         <>
             <TittleKeyboard />
-            <div className="container-keyboard d-flex flex-column">
+            <div className={`container-keyboard d-flex flex-column`} id="keyboard">
                 <HeaderKeyboard operacion={operacion} clearInput={clearInput} />
                 <div className="container-comentario-keyboard">
-                    <p className="comentario-keyboard">
+                    <p className="comentario-keyboard colorFull">
                         {comentario}
                     </p>
                 </div>
