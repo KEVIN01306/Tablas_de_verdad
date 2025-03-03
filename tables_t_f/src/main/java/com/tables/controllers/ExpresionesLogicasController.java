@@ -43,7 +43,11 @@ public class ExpresionesLogicasController {
                 break;
             case "→": // CONDICIONAL
                 resultado = !p || q;
+                break;        
+            case "↔": // BICONDICONAL
+                resultado = p == q;
                 break;
+            
 
             default:
                 return ResponseEntity.badRequest().body(false);
