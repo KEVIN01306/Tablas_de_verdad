@@ -47,7 +47,9 @@ public class ExpresionesLogicasController {
             case "↔": // BICONDICONAL
                 resultado = p == q;
                 break;
-            
+            case "⊕": // DISYUNCION EXCLUYENTE
+                resultado = p != q;
+                break;
 
             default:
                 return ResponseEntity.badRequest().body(false);
