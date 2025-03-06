@@ -1,5 +1,6 @@
 import { useState,useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { ModalInformacionE,ModalInformacionP } from "./modal";
 
 const TittleKeyboard = () => {
     return (
@@ -9,7 +10,8 @@ const TittleKeyboard = () => {
     );
 };
 
-const HeaderKeyboard = ({ operacion, clearInput }: { operacion: string; clearInput: () => void }) => {
+const HeaderKeyboard = ({ operacion, clearInput,modal }: { operacion: string; clearInput: () => void;modal: boolean }) => {
+    
     return (
         <div className="container-input-keyboard row">
             <input
@@ -22,7 +24,7 @@ const HeaderKeyboard = ({ operacion, clearInput }: { operacion: string; clearInp
             <button className="combinalos col-2 col-md-1" onClick={clearInput}>
                 <i className="bi bi-trash3"></i>
             </button>
-            <button className="combinalos col-2 col-md-1">
+            <button className="combinalos col-2 col-md-1" data-bs-toggle="modal" data-bs-target={`${modal ? "#informacion-m-p": "#informacion-m"}`}>
                 <i className="bi bi-info"></i>
             </button>
         </div>
@@ -136,12 +138,16 @@ const Keyboard = () => {
 
     const { id } = useParams();
 
+    const [modalC,setModalC] = useState(false)
+
     useEffect(() => {
         clearInput()
         if (id === "TableVariables") {
+            setModalC(true)
             setComentario("Escoge tus Proposiciones");
         } else {
             setComentario("¿Te sientes confundido? ¿Qué tal A ∧ B? ¡Explora más para dominarlo!");
+            setModalC(false)
         }
     }, [id]);
 
@@ -239,9 +245,11 @@ const Keyboard = () => {
 
     return (
         <>
+            <ModalInformacionE/>
+            <ModalInformacionP/>
             <TittleKeyboard />
             <div className={`container-keyboard d-flex flex-column`} id="keyboard">
-                <HeaderKeyboard operacion={operacion} clearInput={clearInput} />
+                <HeaderKeyboard operacion={operacion} clearInput={clearInput} modal={modalC} />
                 <div className="container-comentario-keyboard">
                     <p className="comentario-keyboard colorFull">
                         {comentario}
