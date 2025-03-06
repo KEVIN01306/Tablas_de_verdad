@@ -1,6 +1,7 @@
 
 import Header from "../components/header";
 import Keyboard from "../components/keyboard";
+import ModalInformacion from "../components/modal";
 import Table from "../components/table";
 
 const Teclado = () => {
@@ -10,6 +11,7 @@ const Teclado = () => {
             <Header/>
             <Keyboard/>
             <Table/>
+            <ModalInformacion/>
         </div>
     )
 }
