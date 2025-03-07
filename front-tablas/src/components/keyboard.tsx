@@ -170,11 +170,35 @@ const Keyboard = () => {
 
             const data = await response.json();
             console.log("Response tablas:", data);
+            await localStorage.setItem("tablas", JSON.stringify(data));
+            createTableComplete();
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const createTableComplete = async () => {
+        try {
+            const response = await fetch(`${API_URL}/api/generateTruthTableComplete`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ data: JSON.parse(localStorage.getItem("tablas")!),expressions: JSON.parse(localStorage.getItem("expresiones")!)}),
+            });
+
+            if (!response.ok) {
+                throw new Error("Error en la solicitud");
+            }
+
+            const data = await response.json();
+            console.log("Response tablas:", data);
             localStorage.setItem("tablas", JSON.stringify(data));
         } catch (error) {
             console.error(error);
         }
     };
+
 
 
     const recepcionExpresiones = async () => {

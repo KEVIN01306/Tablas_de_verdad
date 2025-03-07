@@ -33,6 +33,8 @@ public class ExpresionesLogicasController {
         Boolean q = request.getSProposicion();
 
 
+        
+
         Boolean resultado;
         switch (operador) {
             case "∧": // AND
@@ -50,7 +52,7 @@ public class ExpresionesLogicasController {
             case "⊕": // DISYUNCION EXCLUYENTE
                 resultado = p != q;
                 break;
-
+            
             default:
                 return ResponseEntity.badRequest().body(false);
         }
