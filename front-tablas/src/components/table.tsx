@@ -24,6 +24,12 @@ const AccionesTable = () => {
 const Table = () => {
     const [headers, setHeaders] = useState<React.ReactNode[]>([]);
     const [rows, setRows] = useState<React.ReactNode[]>([]);
+    const [checked, setChecked] = useState(()=>{
+        const storedValueBB = localStorage.getItem("ValueBB");
+        return storedValueBB !== null ? JSON.parse(storedValueBB):false
+
+    });
+
 
     useEffect(() => {
         const fetchData = () => {
@@ -38,12 +44,19 @@ const Table = () => {
             const newRows = [];
             for (let i = 0; i < numRows; i++) {
                 const cells = newHeaders.map((header, index) => (
-                    <td key={index}>{parsedData[header][i].toString()}</td>
+                    checked 
+                    ? <td key={index}>{parsedData[header][i].toString()}</td>
+                    : <td key={index}>hola</td>
                 ));
                 newRows.push(<tr key={i}>{cells}</tr>);
             }
             setRows(newRows);
         };
+    
+
+    useEffect(() => {
+        setChecked(localStorage.getItem("ValueBB"))
+    })
 
         fetchData();
 

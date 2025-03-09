@@ -1,7 +1,15 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 const ChangeData = () => {
-    const [checked, setChecked] = useState(false);
+    const [checked, setChecked] = useState(()=>{
+        const storedValueBB = localStorage.getItem("ValueBB");
+        return storedValueBB !== null ? JSON.parse(storedValueBB):false
+
+    });
+
+    useEffect(() => {
+        localStorage.setItem("ValueBB",JSON.stringify(checked))
+    },[checked])
 
     const handleToggle = () => {
         setChecked(!checked);
