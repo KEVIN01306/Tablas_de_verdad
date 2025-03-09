@@ -54,10 +54,11 @@ const Table = () => {
             const newRows = [];
             for (let i = 0; i < numRows; i++) {
                 const cells = newHeaders.map((header, index) => (
-                    console.log(checked),
                     checked 
-                    ? <td key={index}>{parsedData[header][i].toString()}</td>
-                    : <td key={index}>hola</td>
+                    ? <td key={index}>
+                        {parsedData[header][i] ? "1" : "0"}
+                    </td>
+                    : <td key={index}>{parsedData[header][i].toString()}</td>
                 ));
                 newRows.push(<tr key={i}>{cells}</tr>);
             }
