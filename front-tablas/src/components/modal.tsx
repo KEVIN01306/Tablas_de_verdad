@@ -21,7 +21,6 @@ export const ModalInformacionE = () => {
                                 <p className="">
                                 Para comenzar, convierta sus proposiciones en expresiones logicas. ¡Aqui tiene una tabla que le servira de guia para uso de los operadores lógicos!
                                 </p>
-
                                 <table className="table table-striped">
                                     <thead>
                                         <tr>
@@ -74,7 +73,23 @@ export const ModalInformacionE = () => {
                                             </tr>
                                     </tbody>
                                 </table>
-                                <h2 className="modal-title fs-5 text-center m-1" id="staticBackdropLabel" >Ejemplo</h2>
+                                <h2 className="modal-title fs-5 text-center m-1" id="staticBackdropLabel" >Ejemplos de entradas validas</h2>
+                                <p>Ingresa las expresiones lógicas que deseas evaluar, separadas por comas.</p>
+                                <p>Puedes ingresar un máximo de 3 expresiones.</p>
+                                <p>Asegúrate de que las variables utilizadas en las expresiones hayan sido ingresadas previamente.</p>
+                                <p className="">
+                                ¡Aqui tiene algunos ejemplos de entradas validas!
+                                </p>
+                                    <p>A∧B</p>
+                                    <p>A∨B, A→B</p>
+                                    <p>A→B, A↔B, A∧B</p>
+                                <h2 className="modal-title fs-5 text-center m-1" id="staticBackdropLabel" >Ejemplos de entradas no validas</h2>
+                                <p className="">
+                                ¡Aqui tiene algunos ejemplos de entradas no validas!
+                                </p>
+                                    <p>A ∧ B ∧ C (más de 2 variables en una expresión)</p>
+                                    <p>A → (B ∧ C) (expresión anidada)</p>
+                                <h2 className="modal-title fs-5 text-center m-1" id="staticBackdropLabel" >Ejemplo de tabla de verdad</h2>
                                 <table className="table table-striped">
                                     <thead>
                                         <tr>
@@ -136,11 +151,15 @@ export const ModalInformacionP = () => {
                                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                         <div className="modal-body">
-                            <h2 className="modal-title fs-5 text-center m-1" id="staticBackdropLabel" >Titulo de las preposiciones</h2>
+                            <h2 className="modal-title fs-5 text-center m-1" id="staticBackdropLabel" >Configurar Proposiciones</h2>
                                 <p className="">
-                                texto de las proposiciones
+                                Para configurar proposiciones, ¡Aqui hay algunas instrucciones para hacerlo correctamente!
                                 </p>
-
+                                <h6>Algunos pasos basicos:</h6>
+                                <p>1. Ingresa las variables proposicionales que deseas utilizar, separadas por comas.</p>
+                                <p>2. Puedes ingresar un máximo de 3 variables o un minimo de 2 variables.</p>
+                                <p>3. Ejemplo: A, B, C o A,B.</p>
+                                <p>4. Luego de haberlas configurado correctamente puedes guardarlas, posteriormente puedes generar tus expresiones logicas.</p>
                                 
                         </div>
 
