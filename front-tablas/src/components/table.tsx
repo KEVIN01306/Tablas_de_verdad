@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import ChangeData from "./changedata";
 
-const AccionesTable = () => {
+const AccionesTable = ({checked,onChange}: {checked: boolean; onChange: () => void}) => {
     return (
         <div className="Acciones-table row">
             <div className="boolean-binario d-flex justify-content-start align-items-center col-9 col-md-6">
                 <div className="combina d-flex justify-content-start align-items-center">
                     <p className='colorFull'>Boolean</p>
-                    <ChangeData />
+                    <ChangeData checked={checked} onChange={onChange}/>
                     <p className='colorFull'>Binario</p>
                 </div>
             </div>
@@ -23,13 +23,23 @@ const AccionesTable = () => {
 
 const Table = () => {
     const [headers, setHeaders] = useState<React.ReactNode[]>([]);
-    const [rows, setRows] = useState<React.ReactNode[]>([]);
+    const [rows, setRows] = useState<React.ReactNode[]>([]);;
+
+
+
     const [checked, setChecked] = useState(()=>{
         const storedValueBB = localStorage.getItem("ValueBB");
         return storedValueBB !== null ? JSON.parse(storedValueBB):false
 
     });
 
+    useEffect(() => {
+        localStorage.setItem("ValueBB",JSON.stringify(checked))
+    },[checked])
+
+    const handleToggle = () => {
+        setChecked(!checked);
+    };
 
     useEffect(() => {
         const fetchData = () => {
@@ -44,6 +54,7 @@ const Table = () => {
             const newRows = [];
             for (let i = 0; i < numRows; i++) {
                 const cells = newHeaders.map((header, index) => (
+                    console.log(checked),
                     checked 
                     ? <td key={index}>{parsedData[header][i].toString()}</td>
                     : <td key={index}>hola</td>
@@ -53,22 +64,19 @@ const Table = () => {
             setRows(newRows);
         };
     
-
-    useEffect(() => {
-        setChecked(localStorage.getItem("ValueBB"))
-    })
-
         fetchData();
 
         const intervalId = setInterval(fetchData, 1000);
 
         return () => clearInterval(intervalId);
-    }, []);
+    }, [checked]);
+
+
 
 
     return (
         <section className="result-table-contaier">
-            <AccionesTable />
+            <AccionesTable checked={checked} onChange={handleToggle}/>
             <div className="container-table">
                 <table className="table table-striped">
                     <thead>
