@@ -6,7 +6,7 @@ const InfoTablas = () =>  {
 
 
     return (
-        <div className="container-fluid 100vh cont-documentacion">
+        <div className="container 100vh cont-documentacion">
             <div className="container">
             <h2 className="text-center">¿Cómo utilizar el generador de tablas de verdad?</h2>
             <br />
