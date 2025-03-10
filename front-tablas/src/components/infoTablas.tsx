@@ -9,7 +9,7 @@ const InfoTablas = () =>  {
         <div className="container-fluid 100vh cont-documentacion">
             <div className="container">
             <h2>¿Cómo utilizar el generador de tablas de verdad?</h2>
-                <img src="assets/acercaDe/Analizar.png" alt="" />
+                <img src="assets/acercaDe/Guardar.png" alt="" />
                 <h4>Paso 1</h4>
                 <h5>Configure sus proposiciones</h5>
                 <p>En la parte derecha se encuentra un menu desplegable donde estara la opcion de 
@@ -29,6 +29,11 @@ const InfoTablas = () =>  {
                 <h5>Genere la tabla</h5>
                 <p>Haga clic en el botón "Generar" para crear su tabla de verdad. Nuestra herramienta procesará
                 su expresión y mostrará una tabla completa que muestra todos los resultados posibles según las combinaciones lógicas.</p>
+                <br />
+                <img src="assets/acercaDe/Analizar.png" alt="" />
+                <h4>Paso 4</h4>
+                <h5>Analizar resultados</h5>
+                <p>Revise la tabla para comprender como interatúan las diferentes operaciones lógicas.</p>
             </div>
 
         </div>
