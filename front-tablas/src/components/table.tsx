@@ -2,6 +2,25 @@ import { useState, useEffect } from 'react';
 import ChangeData from "./changedata";
 
 const AccionesTable = ({checked,onChange}: {checked: boolean; onChange: () => void}) => {
+
+    const handleCopyTable = () => {
+        const table = document.getElementById("tabla") as HTMLTableElement;
+        if (!table) return;
+
+        let tableText = "";
+
+        for (let row of table.rows) {
+            let rowText = [];
+            for (let cell of row.cells) {
+                rowText.push(cell.textContent?.trim() || "");
+            }
+            tableText += rowText.join("\t") + "\n"; 
+        }
+
+        navigator.clipboard.writeText(tableText)
+            .then(() => alert("Tabla copiada al portapapeles"))
+            .catch(err => console.error("Error al copiar: ", err));
+    };
     return (
         <div className="Acciones-table row">
             <div className="boolean-binario d-flex justify-content-start align-items-center col-9 col-md-6">
@@ -12,7 +31,7 @@ const AccionesTable = ({checked,onChange}: {checked: boolean; onChange: () => vo
                 </div>
             </div>
             <div className="copiar-tabla  col-3 col-md-6 d-flex justify-content-end align-items-center" id='combina'>
-                <button className='combina'>
+                <button className='combina' onClick={handleCopyTable}>
                     <i className="bi bi-copy"></i>
                     <span className="span-copy"></span>
                 </button>
@@ -55,10 +74,10 @@ const Table = () => {
             for (let i = 0; i < numRows; i++) {
                 const cells = newHeaders.map((header, index) => (
                     checked 
-                    ? <td key={index}>
+                    ? <td key={index} className='text-center'>
                         {parsedData[header][i] ? "1" : "0"}
                     </td>
-                    : <td key={index}>{parsedData[header][i].toString()}</td>
+                    : <td className='text-center' key={index}>{parsedData[header][i].toString()}</td>
                 ));
                 newRows.push(<tr key={i}>{cells}</tr>);
             }
@@ -79,13 +98,15 @@ const Table = () => {
         <section className="result-table-contaier">
             <AccionesTable checked={checked} onChange={handleToggle}/>
             <div className="container-table">
-                <table className="table table-striped">
+                <table className="table table-striped" id='tabla'>
                     <thead>
-                    {headers.map((header, index) => (
-                        <th key={index}>
+                        <tr>
+                        {headers.map((header, index) => (
+                        <th key={index} className='text-center'>
                             {typeof header === "string" ? header.replace("/", "") : header}
                         </th>
                     ))}
+                        </tr>
                     </thead>
                     <tbody>
                         {rows.length > 0 
