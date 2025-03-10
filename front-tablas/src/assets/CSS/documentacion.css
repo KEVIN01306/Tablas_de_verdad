@@ -1,8 +1,16 @@
 
 
-.cont-documentacion img{
+.cont-documentacion div img{
     width: 250px;
     margin: 0 auto;
     display: block;
     border-radius: 10px;
+}
+
+.cont-documentacion div{
+    padding: 2rem;
+}
+
+.cont-documentacion{
+    background-color: rgba(255, 255, 255, 0.781);
 }

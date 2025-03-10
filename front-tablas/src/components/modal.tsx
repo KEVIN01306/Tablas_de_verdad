@@ -194,15 +194,14 @@ export const ModalNotVariables = () =>  {
             const modal = Modal.getInstance(modalElement) || new Modal(modalElement);
             modal.hide();
     
-            // Espera un poco y elimina el fondo gris si queda activo
             setTimeout(() => {
                 const backdrop = document.querySelector(".modal-backdrop");
                 if (backdrop) {
                     backdrop.remove();
-                    document.body.classList.remove("modal-open"); // Evita que el scroll quede bloqueado
-                    document.body.style.overflow = "auto"; // Restaura el scroll si se bloqueó
+                    document.body.classList.remove("modal-open"); 
+                    document.body.style.overflow = "auto"; 
                 }
-            }, 300); // Espera 300ms para asegurarse de que el modal se oculta primero
+            }, 300);
         }
     };
     
@@ -211,7 +210,7 @@ export const ModalNotVariables = () =>  {
         <div className="modal-dialog">
             <div className="modal-content">
             <div className="modal-header">
-                <h1 className="modal-title fs-5" id="advertenciaVLabel">Advertencia:</h1>
+                <h1 className="modal-title fs-5" id="advertenciaVLabel">Importante!</h1>
             </div>
             <div className="modal-body">
                 <div className="alert alert-light" role="alert">

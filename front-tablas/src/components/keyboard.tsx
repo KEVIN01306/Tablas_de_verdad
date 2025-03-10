@@ -55,14 +55,14 @@ const TeclasKeyboard = ({ agregarCaracter, borrarUltimo }: { agregarCaracter: (v
         const cerrarBackdrop = () => {
             setTimeout(() => {
                 document.querySelectorAll(".modal-backdrop").forEach(backdrop => backdrop.remove());
-                document.body.classList.remove("modal-open"); // Elimina clase que bloquea el scroll
-                document.body.style.overflow = "auto"; // Restaura el scroll normal
-            }, 300); // Tiempo suficiente para que el modal desaparezca antes de limpiar
+                document.body.classList.remove("modal-open");
+                document.body.style.overflow = "auto"; 
+            }, 300); 
         };
         const valorString = localStorage.getItem("Proposiciones") ;
         console.log("ValorString:",valorString);
         const modalElement = document.getElementById('advertenciaV');
-        if (modalElement) {  // Asegura que no es null
+        if (modalElement) {  
             const modal = new Modal(modalElement);
             if (valorString === null){
                 cerrarBackdrop();

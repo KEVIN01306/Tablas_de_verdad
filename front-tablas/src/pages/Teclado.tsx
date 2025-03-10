@@ -1,5 +1,6 @@
 
 import Header from "../components/header";
+import InfoTablas from "../components/infoTablas";
 import Keyboard from "../components/keyboard";
 import Table from "../components/table";
 
@@ -10,6 +11,7 @@ const Teclado = () => {
             <Header/>
             <Keyboard/>
             <Table/>
+            <InfoTablas/>
         </div>
     )
 }
