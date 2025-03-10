@@ -25,13 +25,13 @@ export const ModalInformacionE = () => {
                                     <thead>
                                         <tr>
                                             <th>
-                                                <td>Operador</td>
+                                                Operador
                                             </th>
                                             <th>
-                                                <td>Símbolo</td>
+                                                Símbolo
                                             </th>
                                             <th>
-                                                <td>Expresion</td>
+                                                Expresion
                                             </th>
                                         </tr>
                                     </thead>
@@ -94,13 +94,13 @@ export const ModalInformacionE = () => {
                                     <thead>
                                         <tr>
                                             <th>
-                                                <td>A</td>
+                                                A
                                             </th>
                                             <th>
-                                                <td>B</td>
+                                                B
                                             </th>
                                             <th>
-                                                <td>A∧B</td>
+                                                A∧B
                                             </th>
                                         </tr>
                                     </thead>
@@ -156,11 +156,19 @@ export const ModalInformacionP = () => {
                                 Para configurar proposiciones, ¡Aqui hay algunas instrucciones para hacerlo correctamente!
                                 </p>
                                 <h6>Algunos pasos basicos:</h6>
-                                <p>1. Ingresa las variables proposicionales que deseas utilizar, separadas por comas.</p>
-                                <p>2. Puedes ingresar un máximo de 3 variables o un minimo de 2 variables.</p>
-                                <p>3. Ejemplo: A, B, C o A,B.</p>
-                                <p>4. Luego de haberlas configurado correctamente puedes guardarlas, posteriormente puedes generar tus expresiones logicas.</p>
-                                
+                                <ol>
+                                    <li>Ingresa las variables proposicionales que deseas utilizar, separadas por comas.</li>
+                                    <table className="table table-striped">
+                                    <tbody>
+                                            <tr>
+                                                <td>A,B,C</td>
+                                            </tr>
+                                    </tbody>
+                                    </table>
+                                    <li>Puedes ingresar un máximo de 3 variables o un minimo de 1 variables.</li>
+                                    <li>Ejemplo: A, B, C o A,B.</li>
+                                    <li>Luego de haberlas configurado correctamente puedes guardarlas, posteriormente puedes generar tus expresiones logicas.</li>
+                                </ol>
                         </div>
 
                 </div>

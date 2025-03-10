@@ -50,7 +50,7 @@ const Tecla = ({
 };
 
 const TeclasKeyboard = ({ agregarCaracter, borrarUltimo }: { agregarCaracter: (val: string) => void; borrarUltimo: () => void }) => {
-        const valorString = localStorage.getItem("Proposiciones");
+        const valorString = localStorage.getItem("Proposiciones") ;
     const valor = valorString ? JSON.parse(valorString) : [];
     return (
         <div className="container-teclas-keyboard row">

@@ -22,6 +22,12 @@ const Header = () => {
         toggleMenu()
     }
 
+    const irAcercaDe = () =>{
+        navigate('/Acerca de')
+        toggleMenu()
+    }
+
+
 
     return(
         <nav className="nav-principal d-flex justify-content-between">
@@ -39,7 +45,7 @@ const Header = () => {
                     <li><hr className="dropdown-divider"/></li>
                     <li><a className="dropdown-item" onClick={irProposiciones}>Configurar Proposiciones</a></li>
                     <li><hr className="dropdown-divider"/></li>
-                    <li><a className="dropdown-item" onClick={toggleMenu}>Documentación</a></li>
+                    <li><a className="dropdown-item" onClick={irAcercaDe}>Acerca de</a></li>
                 </ul>
             </div>
         </nav>
