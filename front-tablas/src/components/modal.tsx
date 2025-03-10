@@ -166,7 +166,23 @@ export const ModalInformacionP = () => {
                                     </tbody>
                                     </table>
                                     <li>Puedes ingresar un máximo de 3 variables o un minimo de 1 variables.</li>
-                                    <li>Ejemplo: A, B, C o A,B.</li>
+                                    <li>Ejemplos:</li>
+                                        <table className="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>3 variables</th>
+                                                    <th>2 variables</th>
+                                                    <th>1 variable</th>
+                                                </tr>
+                                                </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>A, B, C</td>
+                                                    <td>A, B</td>
+                                                    <td>A</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     <li>Luego de haberlas configurado correctamente puedes guardarlas, posteriormente puedes generar tus expresiones logicas.</li>
                                 </ol>
                         </div>
