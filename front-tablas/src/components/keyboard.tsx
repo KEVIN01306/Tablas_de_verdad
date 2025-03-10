@@ -1,6 +1,8 @@
 import { useState,useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { ModalInformacionE,ModalInformacionP } from "./modal";
+import { ModalInformacionE,ModalInformacionP,ModalNotVariables } from "./modal";
+import { Modal } from "bootstrap";
+
 
 const TittleKeyboard = () => {
     return (
@@ -50,7 +52,24 @@ const Tecla = ({
 };
 
 const TeclasKeyboard = ({ agregarCaracter, borrarUltimo }: { agregarCaracter: (val: string) => void; borrarUltimo: () => void }) => {
+        const cerrarBackdrop = () => {
+            setTimeout(() => {
+                document.querySelectorAll(".modal-backdrop").forEach(backdrop => backdrop.remove());
+                document.body.classList.remove("modal-open"); // Elimina clase que bloquea el scroll
+                document.body.style.overflow = "auto"; // Restaura el scroll normal
+            }, 300); // Tiempo suficiente para que el modal desaparezca antes de limpiar
+        };
         const valorString = localStorage.getItem("Proposiciones") ;
+        console.log("ValorString:",valorString);
+        const modalElement = document.getElementById('advertenciaV');
+        if (modalElement) {  // Asegura que no es null
+            const modal = new Modal(modalElement);
+            if (valorString === null){
+                cerrarBackdrop();
+                modal.show();
+            }
+        }
+
     const valor = valorString ? JSON.parse(valorString) : [];
     return (
         <div className="container-teclas-keyboard row">
@@ -269,6 +288,7 @@ const Keyboard = () => {
 
     return (
         <>
+            <ModalNotVariables/>
             <ModalInformacionE/>
             <ModalInformacionP/>
             <TittleKeyboard />

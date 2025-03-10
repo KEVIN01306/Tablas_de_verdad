@@ -1,7 +1,7 @@
 
 
-
-
+import { Modal } from "bootstrap";
+import { useNavigate } from "react-router-dom"
 
 
 
@@ -175,6 +175,56 @@ export const ModalInformacionP = () => {
     </div>
     </div>
         </>
+    )
+}
+
+export const ModalNotVariables = () =>  {
+
+    const navigate = useNavigate()
+
+    const irProposiciones = () =>{
+        cerrarModal()
+        navigate('/configuracion/TableVariables')
+    }
+
+    const cerrarModal = () => {
+        const modalElement = document.querySelector("#advertenciaV");
+    
+        if (modalElement) {
+            const modal = Modal.getInstance(modalElement) || new Modal(modalElement);
+            modal.hide();
+    
+            // Espera un poco y elimina el fondo gris si queda activo
+            setTimeout(() => {
+                const backdrop = document.querySelector(".modal-backdrop");
+                if (backdrop) {
+                    backdrop.remove();
+                    document.body.classList.remove("modal-open"); // Evita que el scroll quede bloqueado
+                    document.body.style.overflow = "auto"; // Restaura el scroll si se bloqueó
+                }
+            }, 300); // Espera 300ms para asegurarse de que el modal se oculta primero
+        }
+    };
+    
+    return(
+        <div className="modal fade" id="advertenciaV" data-bs-backdrop="static" data-bs-keyboard="false"  aria-labelledby="advertenciaVLabel" aria-hidden="true">
+        <div className="modal-dialog">
+            <div className="modal-content">
+            <div className="modal-header">
+                <h1 className="modal-title fs-5" id="advertenciaVLabel">Advertencia:</h1>
+            </div>
+            <div className="modal-body">
+                <div className="alert alert-light" role="alert">
+                    Ooops, parece que no has ingresado ninguna variable, por favor ingresa al menos una variable para continuar.
+                </div>
+            </div>
+            <div className="modal-footer">
+                <button type="button" className="btn btn-primary"  onClick={irProposiciones}>Configuracion</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
     )
 }
 
