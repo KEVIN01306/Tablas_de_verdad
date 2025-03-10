@@ -22,11 +22,6 @@ const Header = () => {
         toggleMenu()
     }
 
-    const irAcercaDe = () =>{
-        navigate('/Acerca de')
-        toggleMenu()
-    }
-
 
 
     return(
@@ -44,8 +39,6 @@ const Header = () => {
                     <li><a className="dropdown-item" onClick={irGenerador}>Generador</a></li>
                     <li><hr className="dropdown-divider"/></li>
                     <li><a className="dropdown-item" onClick={irProposiciones}>Configurar Proposiciones</a></li>
-                    <li><hr className="dropdown-divider"/></li>
-                    <li><a className="dropdown-item" onClick={irAcercaDe}>Acerca de</a></li>
                 </ul>
             </div>
         </nav>

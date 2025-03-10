@@ -36,38 +36,52 @@ public class TruthTableController {
         List<String> expressions = request.getExpressions();
         Map<String, List<Boolean>> resultTable = new LinkedHashMap<>(data);
         RestTemplate restTemplate = new RestTemplate();
-
+    
         for (String expression : expressions) {
-
-            if (expression.matches("^[A-Z]$")){
-                List<Boolean> pValues = data.get(expression);
-                resultTable.put(expression, pValues);
+            if (expression.matches("^[A-Z]$")) {
+                if (data.containsKey(expression)) {
+                    List<Boolean> pValues = data.get(expression);
+                    resultTable.put(expression+"/", pValues);
+                }
                 continue;
             }
-
+    
             String[] parts = expression.split("(?=[∧∨→↔⊕])|(?<=[∧∨→↔⊕])");
-            if (parts.length != 3) continue;
-            
+            if (parts.length != 3) continue; 
+    
             String p = parts[0];
             String operator = parts[1];
             String q = parts[2];
-            
+    
+            if (!data.containsKey(p) || !data.containsKey(q)) {
+                continue; 
+            }
+    
             List<Boolean> pValues = data.get(p);
             List<Boolean> qValues = data.get(q);
             List<Boolean> expressionResults = new ArrayList<>();
-
+    
             for (int i = 0; i < pValues.size(); i++) {
                 LogicRequest logicRequest = new LogicRequest();
                 logicRequest.setPProposicion(pValues.get(i));
                 logicRequest.setSProposicion(qValues.get(i));
                 logicRequest.setVLogico(operator);
-
-                ResponseEntity<Boolean> response = restTemplate.postForEntity("https://patient-compassion-production.up.railway.app/api/operadoresLogicos", logicRequest, Boolean.class);
-                expressionResults.add(response.getBody());
+    
+                try {
+                    ResponseEntity<Boolean> response = restTemplate.postForEntity(
+                        "https://patient-compassion-production.up.railway.app/api/operadoresLogicos", 
+                        logicRequest, 
+                        Boolean.class
+                    );
+                    expressionResults.add(response.getBody());
+                } catch (Exception e) {
+                    expressionResults.add(false);
+                }
             }
+    
             resultTable.put(expression, expressionResults);
         }
-
+    
         return ResponseEntity.ok(resultTable);
     }
 }

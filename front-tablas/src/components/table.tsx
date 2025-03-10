@@ -81,11 +81,11 @@ const Table = () => {
             <div className="container-table">
                 <table className="table table-striped">
                     <thead>
-                        <tr>
-                            {headers.map((header, index) => (
-                                <th key={index}>{header}</th>
-                            ))}
-                        </tr>
+                    {headers.map((header, index) => (
+                        <th key={index}>
+                            {typeof header === "string" ? header.replace("/", "") : header}
+                        </th>
+                    ))}
                     </thead>
                     <tbody>
                         {rows.length > 0 

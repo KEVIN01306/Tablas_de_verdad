@@ -76,21 +76,21 @@ const TeclasKeyboard = ({ agregarCaracter, borrarUltimo }: { agregarCaracter: (v
             <Tecla value={valor[0] ? valor[0] : ""} type_="btn-yellow" onClick={() => agregarCaracter(valor[0] ? valor[0] : "")} />
             <Tecla value="∧" descripcion="Y" onClick={() => agregarCaracter("∧")} />
             <Tecla value="∨" descripcion="O" onClick={() => agregarCaracter("∨")} />
-            <Tecla value="~" descripcion="NO" onClick={() => agregarCaracter("~")} />
+            <Tecla value="~" descripcion="NO" onClick={() => agregarCaracter("")} />
             <Tecla value="," descripcion="coma" onClick={() => agregarCaracter(",")} />
             <Tecla value={<i className="bi bi-backspace"></i>} type_="btn-red" onClick={borrarUltimo} />
             <Tecla value={valor[1] ? valor[1] : ""} type_="btn-yellow" onClick={() => agregarCaracter(valor[1] ? valor[1] : "")} />
             <Tecla value="" descripcion="" onClick={() => agregarCaracter("")} />
             <Tecla value="→" descripcion="Condicional" onClick={() => agregarCaracter("→")} />
             <Tecla value="⊕" descripcion="⊻" onClick={() => agregarCaracter("⊕")} />
-            <Tecla value="(" descripcion="Parentesis" onClick={() => agregarCaracter("(")} />
-            <Tecla value="T" type_="btn-red" onClick={() => agregarCaracter("T")} />
+            <Tecla value="(" descripcion="Parentesis" onClick={() => agregarCaracter("")} />
+            <Tecla value="T" type_="btn-red" onClick={() => agregarCaracter("")} />
             <Tecla value={valor[2] ? valor[2] : ""} type_="btn-yellow" onClick={() => agregarCaracter(valor[2] ? valor[2] : "")} />
             <Tecla value="" descripcion="" onClick={() => agregarCaracter("")} />
             <Tecla value="↔" descripcion="Bicondicional" onClick={() => agregarCaracter("↔")} />
-            <Tecla value="¬" descripcion="Negación" onClick={() => agregarCaracter("¬")} />
-            <Tecla value=")" descripcion="Paréntesis" onClick={() => agregarCaracter(")")} />
-            <Tecla value="F" type_="btn-red" onClick={() => agregarCaracter("F")} />
+            <Tecla value="¬" descripcion="Negación" onClick={() => agregarCaracter("")} />
+            <Tecla value=")" descripcion="Paréntesis" onClick={() => agregarCaracter("")} />
+            <Tecla value="F" type_="btn-red" onClick={() => agregarCaracter("")} />
         </div>
     );
 };
