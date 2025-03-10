@@ -38,6 +38,13 @@ public class TruthTableController {
         RestTemplate restTemplate = new RestTemplate();
 
         for (String expression : expressions) {
+
+            if (expression.matches("^[A-Z]$")){
+                List<Boolean> pValues = data.get(expression);
+                resultTable.put(expression, pValues);
+                continue;
+            }
+
             String[] parts = expression.split("(?=[∧∨→↔⊕])|(?<=[∧∨→↔⊕])");
             if (parts.length != 3) continue;
             
